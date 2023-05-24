@@ -1,5 +1,5 @@
-FROM alpine:3.16 as core
+FROM node:20-alpine3.16 as core
 
-RUN echo 123 > /test
+COPY main.js /main.js
 
-CMD cat /test
+CMD node /main.js
