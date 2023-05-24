@@ -82,7 +82,7 @@ jobs:
           cache-to: type=gha,mode=max
       # tests 
       - name: Run tests
-        run: docker run ${{ env.REGISTRY }}/${{ env.IMAGE_NAME },,}:main node /test.js
+        run: docker run "${{ env.REGISTRY }}/${{ env.IMAGE_NAME },,}:main" node /test.js
 
 
       # Sign the resulting Docker image digest except on PRs.
