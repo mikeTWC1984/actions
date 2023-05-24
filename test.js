@@ -1,4 +1,5 @@
 
+assert = require('assert')
 
 assert(10 > 3)
 
