@@ -91,7 +91,8 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DH_USER }}
           DOCKERHUB_TOKEN: ${{ secrets.DHUB_TOKEN }}
         run: |
-          echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          echo "building for $DOCKERHUB_USERNAME"
+          echo "$DOCKERHUB_TOKEN" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
           docker build -t ${{ env.IMAGE_NAME }}:latest -f Dockerfile .
           docker push ${{ env.IMAGE_NAME }}:latest
 
