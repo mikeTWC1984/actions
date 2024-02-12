@@ -93,10 +93,17 @@ jobs:
         run: |
           echo "building for $DOCKERHUB_USERNAME"
           echo "$DOCKERHUB_TOKEN" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
-          docker build -t cronicle/actions:latest -f Dockerfile .
-          docker push cronicle/actions:latest
-
-    
+          if [ "${{ github.event_name }}" == "push" ]; then
+            TAG="latest"
+          elif [ "${{ github.event_name }}" == "release" ]; then
+            TAG="${{ github.event.release.tag_name }}"
+          else
+            echo "Unsupported event: ${{ github.event_name }}"
+            exit 1
+          fi
+          echo "publishing tag $TAG"
+          docker build -t cronicle/actions:$TAG -f Dockerfile .
+          docker push cronicle/actions:$TAG    
         
       # tests 
       - name: Run tests
