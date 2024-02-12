@@ -93,8 +93,8 @@ jobs:
         run: |
           echo "building for $DOCKERHUB_USERNAME"
           echo "$DOCKERHUB_TOKEN" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
-          docker build -t ${{ env.IMAGE_NAME }}:latest -f Dockerfile .
-          docker push ${{ env.IMAGE_NAME }}:latest
+          docker build -t miketwc1984/actions:latest -f Dockerfile .
+          docker push miketwc1984/actions:latest
 
     
         
