@@ -85,6 +85,18 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          
+      - name: Build and push Docker image
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DH_USER }}
+          DOCKERHUB_TOKEN: ${{ secrets.DHUB_TOKEN }}
+        run: |
+          echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker build -t ${{ env.IMAGE_NAME }}:latest -f Dockerfile .
+          docker push ${{ env.IMAGE_NAME }}:latest
+
+    
+        
       # tests 
       - name: Run tests
         run: docker run "${{ env.REGISTRY }}/${{ env.REPO_LC }}:main" node /test.js
