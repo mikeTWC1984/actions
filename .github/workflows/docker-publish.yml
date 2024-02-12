@@ -88,13 +88,13 @@ jobs:
           
       - name: Build and push Docker image
         env:
-          DOCKERHUB_USERNAME: miketwc1984
+          DOCKERHUB_USERNAME: ${{ secrets.DHUB_USER }}
           DOCKERHUB_TOKEN: ${{ secrets.DHUB_TOKEN }}
         run: |
           echo "building for $DOCKERHUB_USERNAME"
           echo "$DOCKERHUB_TOKEN" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
-          docker build -t miketwc1984/actions:latest -f Dockerfile .
-          docker push miketwc1984/actions:latest
+          docker build -t cronicle/actions:latest -f Dockerfile .
+          docker push cronicle/actions:latest
 
     
         
