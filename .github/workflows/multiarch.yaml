@@ -3,10 +3,10 @@ name: Docker Build Arm64
 on:
     release:
       types: [published]
-    push:
-      branches: [ "main" ]
-      # Publish semver tags as releases.
-      tags: [ 'v*.*.*' ]
+    # push:
+    #   branches: [ "main" ]
+    #   # Publish semver tags as releases.
+    #   tags: [ 'v*.*.*' ]
 
 jobs:
   build:
@@ -31,7 +31,8 @@ jobs:
 
     - name: Set release tag as image tag
       id: set-tag
-      run: echo "::set-output name=TAG::${GITHUB_REF/refs\/tags\//}"
+    #   run: echo "::set-output name=TAG::${GITHUB_REF/refs\/tags\//}"
+      run: echo "{TAG}=${GITHUB_REF/refs\/tags\//} >> $GITHUB_OUTPUT
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
