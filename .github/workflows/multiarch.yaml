@@ -38,5 +38,5 @@ jobs:
         push: true
         tags: |
           docker.io/cronicle/actions:latest
-          docker.io/cronicle/actions:${{ steps.vars.outputs.tag }}
+          docker.io/cronicle/actions:${{ matrix.tag }}
 
