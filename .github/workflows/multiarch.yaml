@@ -3,10 +3,10 @@ name: Docker Build Arm64
 on:
     release:
       types: [published]
-    push:
-      branches: [ "main" ]
-      # Publish semver tags as releases.
-      tags: [ 'v*.*.*' ]
+    # push:
+    #   branches: [ "main" ]
+    #   # Publish semver tags as releases.
+    #   tags: [ 'v*.*.*' ]
 
 jobs:
   build:
@@ -38,5 +38,5 @@ jobs:
         push: true
         tags: |
           docker.io/cronicle/actions:latest
-          docker.io/cronicle/actions:${{ github.event.release.tag_name }}
+          docker.io/cronicle/actions:${{ steps.vars.outputs.tag }}
 
