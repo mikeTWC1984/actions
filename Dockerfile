@@ -11,7 +11,7 @@ RUN apk add nodejs npm esbuild
 RUN npm i
 # RUN npm i esbuild -g
 RUN esbuild --bundle --platform=node --minify --outfile=main.min.js  /proj/main.js
-# RUN ls -lah node_modules/
+RUN ls -lah node_modules/
 
 
 CMD node /main.js
