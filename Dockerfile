@@ -7,8 +7,7 @@ COPY test.js /proj/test.js
 COPY package.json /proj/package.json
 RUN apk add esbuild nodejs npm
 # RUN npm init -y && 
-RUN npm i ssh2 dockerode
-
+RUN npm i
 RUN esbuild --bundle --platform=node --minify --outfile=main.min.js  /proj/main.js
 
 
