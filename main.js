@@ -1,5 +1,5 @@
 const ssh = require('ssh2')
-const docker = require('docker')
+const docker = require('dockerode')
 
 console.log("demo 1")
 
