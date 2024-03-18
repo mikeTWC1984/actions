@@ -5,7 +5,7 @@ WORKDIR /proj
 COPY main.js /proj/main.js
 COPY test.js /proj/test.js
 COPY package.json /proj/package.json
-RUN yum install nodejs
+RUN yum install nodejs -y
 # RUN npm init -y && 
 # RUN curl -fsSL https://bun.sh/install | bash
 RUN npm i
