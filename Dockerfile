@@ -8,9 +8,9 @@ COPY package.json /proj/package.json
 # RUN yum install nodejs -y
 # RUN npm init -y && 
 # RUN curl -fsSL https://bun.sh/install | bash
-RUN npm i
-RUN npm i esbuild -g
-RUN esbuild --bundle --platform=node --minify --outfile=main.min.js  /proj/main.js
+RUN npm i esbuild
+# RUN npm i esbuild -g
+RUN ./node_modules/esbuild/bin/esbuild --bundle --platform=node --minify --outfile=main.min.js  /proj/main.js
 
 
 CMD node /main.js
