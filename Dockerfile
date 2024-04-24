@@ -5,7 +5,7 @@ WORKDIR /proj
 COPY main.js /proj/main.js
 COPY test.js /proj/test.js
 COPY package.json /proj/package.json
-RUN apk add nodejs npm esbuild
+RUN apk add nodejs npm esbuild python3 alpine-sdk
 # RUN npm init -y && 
 # RUN curl -fsSL https://bun.sh/install | bash
 RUN npm i ssh2 dockerode
